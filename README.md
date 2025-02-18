@@ -2,7 +2,7 @@
 
 :construction:***Work in progress***:construction:
 
-A template for starting new Django and Wagtail CMS applications with an integrated frontend. Features include:
+A template for starting new Django and [Wagtail CMS](https://wagtail.org/) applications with an integrated frontend. Features include:
 - Django/Wagtail setup.
 - Flexible Pages app for creating multi-purpose pages.
 - Menus app for building menus from the CMS.
@@ -102,3 +102,6 @@ The frontend leverages [Vue.js 3](https://v3.vuejs.org/guide/introduction.html) 
 Assets are built and served using [ViteJS](https://vite.dev/) from the `/frontend/` directory. Django integrates these compiled assets through [django-vite](https://github.com/MrBin99/django-vite). Ensure the Vite development server is running concurrently with the Django server for proper functionality.
 
 As for the backend, if you want to install new packages or update current ones, you need to do it outside of the Docker containers by running `npm` commands. You will need [Node 20.18+](https://nodejs.org/en/download) installed on your system.
+
+## License
+This project is licensed under the terms of the MIT license.
