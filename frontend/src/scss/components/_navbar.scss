@@ -1,0 +1,153 @@
+@use '../abstracts/' as *;
+@use '../theme/' as *;
+@use '../layout/' as *;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .navbar-logo {
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+
+    a {
+      display: block;
+
+      span {
+        font-family: 'HankenBook';
+        font-size: 1.5rem;
+        color: $white;
+        font-weight: 800;
+        text-transform: capitalize;
+      }
+    }
+
+    .navbar-logo-figure {
+      max-width: 150px;
+      max-height: 55.1px;
+    }
+  }
+
+  .navbar-menu-toggler {
+    background-color: $primary;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    outline: 0;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+
+    @include respond-to(lg) {
+      display: none;
+    }
+
+    .line {
+      display: block;
+      background-color: $white;
+      height: 2px;
+      width: 80%;
+      position: absolute;
+      border-radius: 1px;
+      opacity: 1;
+
+      &:after,
+      &:before {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: $white;
+        border-radius: 1px;
+        transition: transform 0.25s;
+      }
+
+      &:before {
+        height: 2px;
+        position: absolute;
+        margin-top: -33%;
+      }
+
+      &:after {
+        position: absolute;
+        margin-top: 33%;
+      }
+    }
+
+    &.active {
+      .line {
+        height: 0;
+
+        &:after,
+        &:before {
+          margin-top: 0;
+        }
+
+        &:before {
+          transform: rotate(45deg);
+        }
+
+        &:after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  // No-JS navbar toggle
+  .navbar-menu-toggler-control {
+    display: none;
+
+    &:checked ~ .navbar-menu {
+      display: flex;
+    }
+  }
+
+  .navbar-menu {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: left;
+
+    @include respond-to(lg) {
+      display: block;
+      flex-basis: content;
+    }
+
+    &.navbar-collapse {
+      background-color: $primary;
+      display: block;
+      flex-basis: 100%;
+      position: absolute;
+      width: 100vw;
+      top: $header-height;
+      left: 0;
+      z-index: 10;
+      height: 0;
+      overflow: hidden;
+
+      @include respond-to(lg) {
+        display: none;
+        flex-basis: 100%;
+      }
+
+      .menu-nav {
+        padding: 0 $container-space rem-calc(40);
+
+        @include respond-to(md) {
+          max-width: $md;
+          padding: 0 $container-space-md rem-calc(40);
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

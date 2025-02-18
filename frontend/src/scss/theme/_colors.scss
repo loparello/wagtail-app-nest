@@ -1,0 +1,116 @@
+// -----------------------------------------------------------------------------
+// The brand colour map
+// -----------------------------------------------------------------------------
+
+@use 'sass:map';
+@use 'sass:color';
+
+$white: #fff !default;
+$gray-100: #f6f6f6 !default;
+$gray-200: #ebebeb !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #cccccc !default;
+$gray-500: #b4bcc2 !default;
+$gray-600: #999999 !default;
+$gray-700: #7b8a8b !default;
+$gray-800: #494949 !default;
+$gray-900: #353535 !default;
+$black: #000 !default;
+
+$blue: #180296 !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #e74c3c !default;
+$orange: #ff870f !default;
+$yellow: #ffc905 !default;
+$green: #7fb382 !default;
+$teal: #59a49f !default;
+$cyan: #3498db !default;
+
+$primary: $teal !default;
+$secondary: $yellow !default;
+$accent: $green !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $orange !default;
+$danger: $red !default;
+$lightest: $gray-100 !default;
+$light: $gray-200 !default;
+$dark: $gray-800 !default;
+$darkest: $gray-900 !default;
+
+$colors: (
+  'blue': $blue,
+  'indigo': $indigo,
+  'purple': $purple,
+  'pink': $pink,
+  'red': $red,
+  'orange': $orange,
+  'yellow': $yellow,
+  'green': $green,
+  'teal': $teal,
+  'cyan': $cyan,
+);
+
+$main-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'accent': $accent,
+  'success': $success,
+  'info': $info,
+  'warning': $warning,
+  'danger': $danger,
+  'white': $white,
+  'lightest': $lightest,
+  'light': $light,
+  'dark': $dark,
+  'darkest': $darkest,
+  'black': $black,
+);
+
+$merged-colors: map.merge($colors, $main-colors);
+
+@each $class, $color in $merged-colors {
+  .#{$class} {
+    background-color: $color;
+  }
+
+  .#{$class}-text {
+    color: $color !important;
+  }
+
+  .#{$class}-darken {
+    background-color: color.adjust($color, $lightness: -20%);
+  }
+
+  .#{$class}-text-darken {
+    color: color.adjust($color, $lightness: -20%);
+  }
+
+  .#{$class}-lighten {
+    background-color: color.adjust($color, $lightness: 35%) !important;
+  }
+
+  .#{$class}-text-lighten {
+    color: color.adjust($color, $lightness: 20%);
+  }
+
+  .#{$class}-border {
+    border-color: $color;
+  }
+
+  .#{$class}-border-lighten {
+    border-color: color.adjust($color, $lightness: 20%);
+  }
+
+  .#{$class}-text-links {
+    a:not(.btn) {
+      color: $color !important;
+
+      &:hover {
+        color: color.adjust($color, $lightness: -20%) !important;
+      }
+    }
+  }
+}

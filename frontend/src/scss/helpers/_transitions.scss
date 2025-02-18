@@ -1,0 +1,14 @@
+// -----------------------------------------------------------------------------
+// Transition helper classes
+// -----------------------------------------------------------------------------
+
+// Collapse effect (to use with Vue component)
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: all 0.15s ease-out;
+}
+
+.collapse-enter-from,
+.collapse-leave-to {
+  opacity: 0;
+}

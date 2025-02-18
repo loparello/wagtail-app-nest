@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block meta_tags %}
+    <link rel="shortcut icon" href="{% static 'app/img/favicon.ico' %}" type="image/x-icon">
+{% endblock %}
+
+{% comment %} Style class to use in 'frontend/src/scss/pages/_404.scss' {% endcomment %}
+{% block body_class %}404-page{% endblock %}
+
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <h1>{% translate "Page not found" %}</h1>
+                    <h2>{% translate "Sorry, this page could not be found." %}</h2>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

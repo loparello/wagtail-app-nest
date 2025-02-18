@@ -1,0 +1,105 @@
+// -----------------------------------------------------------------------------
+// Grid framework with containers, rows and columns
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+@use 'variables' as *;
+
+// Containers
+.container {
+  width: 100%;
+  padding-right: $container-space;
+  padding-left: $container-space;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include respond-to(md) {
+    padding-right: $container-space-md;
+    padding-left: $container-space-md;
+  }
+
+  // Generate container widths based on $containers map
+  @each $key, $value in $containers {
+    @include respond-to($key) {
+      max-width: $value;
+    }
+  }
+
+  // If sub container remove horizontal padding
+  .sub-container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// Generate containers that respond to the common breakpoints
+@each $key, $value in $containers {
+  .container-#{$key} {
+    @include respond-to($key) {
+      max-width: $value;
+    }
+  }
+}
+
+// Generate full width containers
+.container-fluid {
+  width: 100%;
+  padding-right: $gutter;
+  padding-left: $gutter;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Rows
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$gutter;
+  margin-left: -$gutter;
+
+  @include respond-to(md) {
+    margin-right: -$gutter-md;
+    margin-left: -$gutter-md;
+  }
+}
+
+// Columns
+@for $i from 1 through $num-cols {
+  .col-#{$i} {
+    @include col($i);
+  }
+}
+
+@each $size in $breakpoint-sizes {
+  @include cols($size);
+}
+
+/* Generate xs col classes for xs breakpoint down */
+@include cols(xs, down);
+
+[class*='col-'] {
+  flex-basis: 1;
+  flex-grow: 1;
+  padding: 0 $gutter;
+
+  @include respond-to(md) {
+    padding: 0 $gutter-md;
+  }
+}
+
+.col {
+  &.no-gutters {
+    margin: 0 $gutter;
+  }
+}
+
+// Builds column offset classes
+@each $size in $breakpoint-sizes {
+  @include respond-to($size) {
+    @for $i from 0 through $num-cols {
+      .offset-#{$size}-#{$i} {
+        margin-left: cols-space($i, $col-unit);
+      }
+    }
+  }
+}

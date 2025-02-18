@@ -1,0 +1,26 @@
+{% load menu_tags %}
+{% comment %} 
+Params from context:
+- request -> The request object
+- page -> Current page object
+- main_menu -> The main Menu object
+{% endcomment %}
+
+{% if main_menu %}
+    {% include "menus/partials/_menu_toggler.html" %}
+    {% menutodict main_menu check_active_item=True as main_menu_dict %}
+
+    <div class="main-menu navbar-menu">
+        <ul class="menu-nav">
+            {% for item in main_menu_dict.menu_items %}
+                {% if item.type == "menu_category" %}
+                    {% include "menus/partials/_main_menu_category.html" %}
+                {% else %}
+                    {% include "menus/partials/_main_menu_link.html" %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    {{ main_menu_dict|json_script:"mainMenuData" }}
+{% endif %}

@@ -1,0 +1,46 @@
+{% load static i18n wagtailuserbar nestcore_tags django_vite %}
+
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html class="no-js" lang="{{ LANGUAGE_CODE }}">
+    <head>
+        {% if request.in_preview_panel %}
+            <base target="_blank">
+        {% endif %}
+
+        {% block meta_tags %}
+            {# Override this in templates for more specific meta tags #}
+            {% if seo_item %}
+                {% meta_tags request seo_item %}
+            {% else %}
+                {% meta_tags request page %}
+            {% endif %}
+        {% endblock %}
+
+        {# Global javascript and stylesheets #}
+        {% vite_hmr_client %}
+        {% vite_asset "src/main.ts" %}
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %}
+
+        {% include "partials/_header.html" %}
+
+        {% block content %}{% endblock %}
+
+        {% include "partials/_footer.html" %}
+
+        {# Global legacy javascript polyfills #}
+        {% vite_legacy_polyfills %}
+        {% vite_legacy_asset "src/main-legacy.ts" %}
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

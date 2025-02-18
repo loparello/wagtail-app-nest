@@ -1,0 +1,28 @@
+{% extends "wagtailadmin/admin_base.html" %}
+{% load static i18n %}
+
+{% block titletag %}{% translate "Too many login attempts" %}{% endblock %}
+{% block bodyclass %}login{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+
+    <link rel="stylesheet" href="{% static 'wagtailadmin/css/layouts/login.css' %}" type="text/css" />
+{% endblock %}
+
+{% block furniture %}
+    <div class="content-wrapper">
+        <h1>{% translate "Too many login attempts" %}</h1>
+        <div class="messages">
+            <ul>
+                <li class="error">
+                    {% translate "Your account has been temporarily locked due too many failed login attempts. " %}
+                    {% translate "Please try again soon." %}
+                </li>
+            </ul>
+        </div>
+        <a href="/admin/login/" class="button">
+           {% translate "Back to login" %}
+        </a>
+    </div>
+{% endblock %}

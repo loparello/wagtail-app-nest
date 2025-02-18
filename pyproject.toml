@@ -1,0 +1,32 @@
+[project]
+name = "wagtail-app-nest"
+version = "0.1.0"
+description = "A template for new Django and Wagtail CMS applications"
+authors = [
+    {name = "Lorenzo Parenti",email = "lorenzoparentidev@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django (>=5.1.6,<5.2.0)",
+    "wagtail (>=6.4,<6.5)",
+    "django-vite (>=3.0.6,<4.0.0)",
+    "django-axes (>=7.0.1,<8.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8"
+
+[tool.poetry.group.pgsql]
+optional = true
+
+[tool.poetry.group.pgsql.dependencies]
+psycopg2 = "^2.9.10"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

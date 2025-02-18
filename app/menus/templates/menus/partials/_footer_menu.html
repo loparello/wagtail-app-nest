@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+
+{% if footer_menu %}
+    <nav class="footer-menu">
+        <ul class="menu-nav">
+            {% for block in footer_menu.menu_items %}
+                {% include_block block with menu=footer_menu check_active_item=False %}
+            {% endfor %}
+        </ul>
+    </nav>
+{% endif %}

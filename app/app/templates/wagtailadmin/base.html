@@ -1,0 +1,11 @@
+{% extends "wagtailadmin/base.html" %}
+{% load static wagtailadmin_tags %}
+
+{% comment %} 
+Uncomment to override logo in admin
+{% block branding_logo %}
+    <div class="sidebar-wagtail-branding__icon-wrapper" style="border-radius: 0;">
+        <img src="{% static 'app/img/logo-round.png' %}" alt="Custom logo">
+    </div>
+{% endblock %}
+{% endcomment %}

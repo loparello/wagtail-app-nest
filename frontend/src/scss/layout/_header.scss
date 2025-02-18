@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// The header element of the layout
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+@use '../theme/' as *;
+@use 'variables' as *;
+
+.header {
+  background-color: $primary;
+  height: $header-height;
+  padding: 1rem 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  @include respond-to(lg) {
+    position: relative;
+  }
+}

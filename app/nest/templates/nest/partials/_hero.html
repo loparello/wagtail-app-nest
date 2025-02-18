@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+
+<div class="hero">
+    {% if page.image %}
+        {% picture page.image format-{avif,webp,jpeg} fill-{1920x335,992x430,768x500} sizes="100vw" %}
+    {% endif %}
+
+    {% include "nest/partials/_page_intro.html" %}
+</div>

@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+
+{% for block in value.link %}
+    <a
+        href="{{ block.value.url }}"
+        target="{{ block.value.target }}"
+        {% if block.value.target == "_blank" %}
+            rel="noopener noreferrer"
+        {% endif %}
+    >
+        {{ value.label }}
+    </a>
+{% endfor %}

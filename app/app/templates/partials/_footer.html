@@ -1,0 +1,32 @@
+{% load i18n static menu_tags %}
+
+<footer class="footer">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-4 col-lg-2">
+                <div class="footer-brand-logo">
+                    <a href="/">
+                        {% comment %} <img 
+                            src="{% static 'app/img/logo.svg' %}"
+                            alt="Logo"
+                        > {% endcomment %}
+                        Wagtail App Nest
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {% menu "footer-menu" as footer_menu %}
+                {% include "menus/partials/_footer_menu.html" with footer_menu=footer_menu %}
+            <div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="copyright">
+                    <p>&copy; {% now "Y" %} <a href="https://github.com/loparello/" target="_blank">Lorenzo Parenti Dev</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
+
+{% comment %} Style class to use in 'frontend/src/scss/pages/_flexible.scss' {% endcomment %}
+{% comment %} {% block body_class %}flexible-page{% endblock %} {% endcomment %}
+
+{% block content %}
+    {% include "nest/partials/_hero.html" %}
+
+    <main class="main">
+        {% for block in page.content %}
+            {% include_block block %}
+        {% endfor %}
+    </main>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load menu_tags %}
+{% comment %} 
+Params:
+- menu: object -> The menu object
+- check_active_item: boolean -> Whether to check if the item is active
+{% endcomment %}
+
+<ul class="submenu">
+    {% for block in value %}
+        {% with block.value as item %}
+            <li 
+                {% if item.handle %}id="{{ item.handle }}"{% endif %}
+                class="submenu-item"
+            >
+                <a 
+                    href="{{ item.url }}"
+                    target="{{ item.target }}"
+                    {% if item.target == "_blank" %}rel="noreferrer noopener"{% endif %}
+                    class="submenu-item-link{% menuitemactiveclass ' active' item.page check_active_item %}"
+                >
+                    {{ item.label_or_page_title }}
+                </a>
+
+                {% if item.page and menu.submenu_levels == 2 %}
+                    {% page_submenu item as page_submenu %}
+                    {% include "menus/partials/_page_submenu.html" with submenu=page_submenu menu=menu check_active_item=check_active_item submenu_level=2 %}
+                {% endif %}
+            </li>
+        {% endwith %}
+    {% endfor %}
+</ul>

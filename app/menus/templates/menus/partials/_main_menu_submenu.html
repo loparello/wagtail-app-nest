@@ -1,0 +1,23 @@
+{% comment %} 
+Params:
+- parent_item: dict -> The parent item of the submenu
+{% endcomment %}
+
+<ul class="submenu">
+    {% for item in parent_item.submenu_items %}
+        <li class="submenu-item">
+            <a
+                href="{{ item.link.url }}"
+                target="{{ item.link.target }}"
+                {% if item.link.target == "_blank" %}rel="noreferrer noopener"{% endif %}
+                class="submenu-item-link{{ item.active|yesno:' active,' }}"
+            >
+                {{ item.label }}
+            </a>
+
+            {% if item.has_submenu %}
+                {% include "menus/partials/_main_menu_submenu.html" with parent_item=item %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

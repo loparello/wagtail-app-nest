@@ -1,0 +1,37 @@
+@use '../abstracts/' as *;
+@use '../theme/' as *;
+
+.form {
+  .form-field {
+    margin-bottom: rem-calc(20);
+
+    .form-field-input {
+      border-radius: rem-calc(8);
+      background: $white;
+      border: 1px solid $gray-300;
+      padding: rem-calc(14) rem-calc(14);
+      width: 100%;
+    }
+
+    .form-field-label {
+      display: block;
+      padding-bottom: rem-calc(5);
+      font-size: rem-calc(14);
+    }
+
+    .form-field-errors {
+      p {
+        color: $danger;
+        font-size: rem-calc(14);
+        margin-top: rem-calc(2);
+        margin-bottom: 0;
+      }
+    }
+
+    &.with-errors {
+      .form-field-input {
+        border: 1px solid $danger;
+      }
+    }
+  }
+}

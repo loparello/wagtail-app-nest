@@ -1,0 +1,56 @@
+@use '../abstracts/' as *;
+@use '../theme/' as *;
+@use '../layout/' as *;
+
+.hero {
+  margin-top: $header-height;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  @include respond-to(lg) {
+    margin-top: 0;
+  }
+
+  picture {
+    img {
+      width: auto;
+      height: 500px;
+
+      @include respond-to(sm) {
+        width: 768px;
+      }
+
+      @include respond-to(md) {
+        width: 992px;
+        height: 430px;
+      }
+
+      @include respond-to(lg) {
+        width: 100%;
+        height: 335px;
+      }
+    }
+  }
+
+  .page-intro {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    .page-intro-title {
+      color: $white;
+    }
+
+    .page-intro-subtitle {
+      color: $white;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-intro-description {
+      color: $white;
+    }
+  }
+}

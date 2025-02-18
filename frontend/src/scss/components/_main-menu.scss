@@ -1,0 +1,145 @@
+@use '../abstracts/' as *;
+@use '../theme/' as *;
+
+.main-menu {
+  .menu-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+
+    @include respond-to(lg) {
+      flex-direction: row;
+    }
+
+    .menu-item {
+      padding: 0.5rem 0;
+
+      @include respond-to(lg) {
+        padding: 0.5rem 1rem;
+      }
+
+      .menu-item-link {
+        color: $white;
+        display: block;
+
+        &.active {
+          opacity: 0.5;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &.menu-category {
+        .menu-item-link {
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      &.dropdown {
+        position: relative;
+        
+        // No-JS dropdown toggle
+        .dropdown-control {
+          display: none;
+
+          &:checked ~ .submenu {
+            display: block;
+          }
+        }
+
+        &:hover {
+          @include respond-to(lg) {
+            .submenu {
+              display: block;
+            }
+          }
+        }
+
+        .menu-item-link {
+          display: inline-block;
+          align-items: center;
+        }
+
+        .menu-item-arrow {
+          display: inline-block;
+          margin-left: 0.255em;
+          cursor: pointer;
+
+          &::after {
+            content: '';
+            border-top: 0.4em solid;
+            border-right: 0.4em solid transparent;
+            border-bottom: 0;
+            border-left: 0.4em solid transparent;
+            color: $white;
+            position: relative;
+            top: 0.9em;
+          }
+        }
+
+        .submenu {
+          display: none;
+          padding: 0.5rem 0;
+          margin: 0;
+          font-size: 1rem;
+          text-align: left;
+          list-style: none;
+          background-color: $primary;
+          background-clip: padding-box;
+          width: 100%;
+
+          @include respond-to(lg) {
+            border: 1px solid rgba($black, 0.15);
+            border-radius: 0.25rem;
+            position: absolute;
+            min-width: 10rem;
+            width: auto;
+            z-index: 1000;
+          }
+
+          &.controlled {
+            display: block;
+          }
+
+          .submenu-item {
+            padding: 0.25rem 1rem;
+
+            .submenu-item-link {
+              display: block;
+              width: 100%;
+              color: $white;
+              clear: both;
+              font-weight: 400;
+              text-align: inherit;
+              text-decoration: none;
+              white-space: nowrap;
+              border: 0;
+
+              &.active {
+                opacity: 0.5;
+              }
+      
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+
+          .submenu {
+            border: none;
+            display: block;
+            font-size: 0.85rem;
+            padding: 0;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+}

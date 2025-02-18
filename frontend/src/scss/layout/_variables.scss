@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// Layout computed variables
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+
+$gutter: rem-calc(10);
+$gutter-md: rem-calc(10);
+
+$container-space: rem-calc(15);
+$container-space-md: rem-calc(20);
+
+$header-height: rem-calc(74);

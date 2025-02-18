@@ -1,0 +1,28 @@
+{% load i18n wagtailcore_tags menu_tags %}
+{% comment %} 
+Params:
+- submenu: dict -> The submenu data
+- menu: object -> The menu object
+- check_active_item: boolean -> Whether to check if the item is active
+- submenu_level: int -> The deepness of the submenu
+{% endcomment %}
+
+{% if submenu.submenu_items %}
+    <ul class="submenu">
+        {% for item in submenu.submenu_items %}
+            <li class="submenu-item">
+                <a 
+                    href="{% pageurl item.page %}"
+                    class="submenu-item-link{% menuitemactiveclass ' active' item.page check_active_item %}"
+                >
+                    {{ item.label }}
+                </a>
+
+                {% if item.page and menu.submenu_levels == 2 and submenu_level <= menu.submenu_levels %}
+                    {% page_submenu item as page_submenu %}
+                    {% include "menus/partials/_page_submenu.html" with submenu=page_submenu menu=menu check_active_item=check_active_item submenu_level=submenu_level|add:1 %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

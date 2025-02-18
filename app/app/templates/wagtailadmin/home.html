@@ -1,0 +1,10 @@
+{% extends "wagtailadmin/home.html" %}
+{% load i18n %}
+
+{% block branding_welcome %}
+    {% if site_name %}
+        {% blocktrans %}Welcome to the Admin for {{ site_name }}{% endblocktrans %}
+    {% else %}
+        {% blocktrans %}Welcome to Wagtail CMS{% endblocktrans %}
+    {% endif %}
+{% endblock %}

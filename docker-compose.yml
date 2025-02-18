@@ -1,0 +1,28 @@
+services:
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: dev.Dockerfile
+    ports:
+      - 5173:5173
+    volumes:
+      - ./frontend/src:/frontend/src
+      - node_modules:/frontend/node_modules
+  app:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - frontend
+    environment:
+      - DJANGO_SETTINGS_MODULE=app.settings.dev
+      - ENVIRONMENT=development
+      - DEV_TOOL=docker
+    restart: unless-stopped
+volumes:
+  node_modules:

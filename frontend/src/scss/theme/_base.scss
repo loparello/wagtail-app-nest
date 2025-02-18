@@ -1,0 +1,111 @@
+@use 'colors' as *;
+@use 'fonts' as *;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: $base-font-size;
+  color: $darkest;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $primary;
+  font-family: 'HankenBook';
+  font-weight: normal;
+  font-style: normal;
+}
+
+input,
+textarea {
+  font-family: 'HankenBook';
+  margin: 0px;
+}
+
+h1,
+.h1 {
+  font-size: 2rem;
+  line-height: 2.625rem;
+}
+
+h2,
+.h2 {
+  font-size: 1.75rem;
+  line-height: 2.375rem;
+}
+
+h3,
+.h3 {
+  font-size: 1.125rem;
+  line-height: 2rem;
+}
+
+h4,
+.h4 {
+  font-size: 0.812rem;
+  line-height: 1.062rem;
+}
+
+h5,
+.h5 {
+  font-size: 0.83rem;
+  line-height: 1.75rem;
+}
+
+h6,
+.h6 {
+  font-size: 1rem;
+  line-height: 1.875rem;
+}
+
+p,
+.p,
+ul {
+  font-size: 1rem;
+  line-height: 1.875rem;
+}
+
+a {
+  font-family: 'Montserrat', sans-serif;
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    color: $secondary;
+  }
+
+  &:visited {
+    color: $primary;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+}
+
+button {
+  font-family: 'HankenBook';
+}
+
+picture {
+  img {
+    width: auto;
+    height: auto;
+  }
+}

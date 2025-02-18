@@ -1,0 +1,30 @@
+{% comment %} 
+Params:
+- item: dict -> The menu item
+{% endcomment %}
+
+<li 
+    {% if item.handle %}id="{{ item.handle }}"{% endif %}
+    class="menu-item{{ item.has_submenu|yesno:' dropdown,' }}"
+>
+    <a 
+        href="{{ item.link.url }}"
+        target="{{ item.link.target }}"
+        {% if item.link.target == "_blank" %}rel="noreferrer noopener"{% endif %}
+        class="menu-item-link{{ item.active|yesno:' active,' }}"
+    >
+        {{ item.label }}
+    </a>
+
+    {% if item.has_submenu %}
+        <input 
+            id="menuItem{{ forloop.counter }}"
+            type="checkbox" name="menuItem{{ forloop.counter }}"
+            class="dropdown-control"
+        >
+        <label class="menu-item-arrow" for="menuItem{{ forloop.counter }}">
+        </label>
+
+        {% include "menus/partials/_main_menu_submenu.html" with parent_item=item %}
+    {% endif %}
+</li>

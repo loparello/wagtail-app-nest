@@ -1,0 +1,21 @@
+{% extends "wagtailadmin/login.html" %}
+{% load i18n nestcore_tags %}
+
+{% block branding_login %}
+    {% translate "Sign in to Wagtail Admin" %}
+{% endblock %}
+
+{% block below_login %}
+    <div style="text-align: center; margin-top: 2rem;">
+        {% appversion with_site_name=True %}
+    </div>
+{% endblock %}
+
+{% comment %}
+Uncomment to override logo in login view
+{% block branding_logo %}
+    <div class="login-logo">
+        <img class="login-logo-img" alt="Logo" src="{% static 'app/img/logo.png' %}" />
+    </div>
+{% endblock %} 
+{% endcomment %}
