@@ -12,14 +12,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 // Reactive state
-const title = ref('Welcome to Wagtail App Nest');
-const message = ref('A template for new Django and Wagtail CMS applications');
+const title = ref("Welcome to Wagtail App Nest");
+const message = ref("A template for new Django and Wagtail CMS applications");
 
 // Lifecycle hook
 onMounted(() => {
-  console.log('Home Hero component mounted with Vue.js');
+  console.log("Home Hero component mounted with Vue.js");
 });
 </script>
