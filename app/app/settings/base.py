@@ -152,7 +152,10 @@ AUTHENTICATION_BACKENDS = [
 # https://django-axes.readthedocs.io/en/latest/4_configuration.html#configuring-project-settings
 AXES_FAILURE_LIMIT = 5  # Number of allowed failed attempts
 AXES_COOLOFF_TIME = timedelta(minutes=5)  # Lockout cooloff
-AXES_LOCKOUT_PARAMETERS = ["username"]
+AXES_LOCKOUT_PARAMETERS = [
+    "username",
+    "ip_address",
+]  # Lockout based on username and IP address
 AXES_LOCKOUT_TEMPLATE = "wagtailadmin/lockout.html"
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
