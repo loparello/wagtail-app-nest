@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* Tell Tailwind where to scan for class usage */
+@source "../../../app/**/*.html";
+@source "../**/*.{vue,ts,js}";
+
+@font-face {
+  font-family: "HankenBook";
+  src:
+    url("../fonts/hanken-book-webfont.woff2") format("woff2"),
+    url("../fonts/hanken-book-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    url("../fonts/montserrat-medium-webfont.woff2") format("woff2"),
+    url("../fonts/montserrat-medium-webfont.woff") format("woff");
+}
+
+@theme {
+  /* Brand fonts */
+  --font-sans: "Montserrat", sans-serif;
+  --font-heading: "HankenBook", sans-serif;
+
+  /* Semantic colors */
+  --color-primary: #59a49f;
+  --color-secondary: #ffc905;
+  --color-accent: #7fb382;
+  --color-success: #7fb382;
+  --color-info: #3498db;
+  --color-warning: #ff870f;
+  --color-danger: #e74c3c;
+
+  /* Brand colors */
+  --color-blue: #180296;
+  --color-indigo: #6610f2;
+  --color-purple: #6f42c1;
+  --color-pink: #e83e8c;
+  --color-red: #e74c3c;
+  --color-orange: #ff870f;
+  --color-yellow: #ffc905;
+  --color-green: #7fb382;
+  --color-teal: #59a49f;
+  --color-cyan: #3498db;
+
+  /* Gray scale */
+  --color-lightest: #f6f6f6;
+  --color-light: #ebebeb;
+  --color-dark: #494949;
+  --color-darkest: #353535;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-darkest);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: normal;
+    font-style: normal;
+    color: var(--color-primary);
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2.625rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+    line-height: 2.375rem;
+  }
+  h3 {
+    font-size: 1.125rem;
+    line-height: 2rem;
+  }
+  h4 {
+    font-size: 0.812rem;
+    line-height: 1.062rem;
+  }
+  h5 {
+    font-size: 0.83rem;
+    line-height: 1.75rem;
+  }
+  h6 {
+    font-size: 1rem;
+    line-height: 1.875rem;
+  }
+
+  input,
+  textarea,
+  button {
+    font-family: var(--font-heading);
+  }
+
+  a {
+    font-family: var(--font-sans);
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:visited:hover {
+    color: var(--color-secondary);
+  }
+
+  a:visited {
+    color: var(--color-primary);
+  }
+
+  picture img {
+    width: auto;
+    height: auto;
+  }
+}

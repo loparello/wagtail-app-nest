@@ -8,6 +8,7 @@ services:
     volumes:
       - ./frontend/src:/frontend/src
       - node_modules:/frontend/node_modules
+      - ./app:/app:ro
   app:
     build:
       context: .
