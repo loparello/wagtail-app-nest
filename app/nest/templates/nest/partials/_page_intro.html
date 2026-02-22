@@ -1,21 +1,27 @@
-<div class="page-intro">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1  class="page-intro-title">
-                    {{ page.title }}
-                </h1>
+{% if page.image %}
+<div class="absolute inset-x-0 top-1/2 -translate-y-1/2">
+    <div class="container mx-auto px-4">
+        <h1 class="text-white">{{ page.title }}</h1>
 
-                {% if page.subtitle %}
-                    <p class="page-intro-subtitle">{{ page.subtitle }}</p>
-                {% endif %}
-                
-                {% if page.description %}
-                    <div class="page-intro-description">
-                        {{ page.description|linebreaks }}
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+        {% if page.subtitle %}
+            <p class="text-white mt-0 mb-6">{{ page.subtitle }}</p>
+        {% endif %}
+
+        {% if page.description %}
+            <div class="text-white">{{ page.description|linebreaks }}</div>
+        {% endif %}
     </div>
 </div>
+{% else %}
+<div class="container mx-auto px-4">
+    <h1>{{ page.title }}</h1>
+
+    {% if page.subtitle %}
+        <p class="mt-0 mb-6">{{ page.subtitle }}</p>
+    {% endif %}
+
+    {% if page.description %}
+        <div>{{ page.description|linebreaks }}</div>
+    {% endif %}
+</div>
+{% endif %}

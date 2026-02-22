@@ -1,14 +1,14 @@
 {% load wagtailimages_tags %}
 
-<section class="section detail">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6{% if value.layout == 'left' %} order-1{% else %} order-2{% endif %}">
-                <h2 class="detail-title">{{ value.title }}</h2>
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap">
+            <div class="w-full md:w-1/2{% if value.layout == 'left' %} md:order-1{% else %} md:order-2{% endif %} px-4">
+                <h2 class="mt-0">{{ value.title }}</h2>
                 {{ value.description|linebreaks }}
             </div>
-            <div class="col-12 col-md-6{% if value.layout == 'right' %} order-1{% else %} order-2{% endif %}">
-                {% picture value.image format-{avif,webp,jpeg} width-{992,768} sizes="(min-width: 768px) 50vw, 100vw" %}
+            <div class="w-full md:w-1/2{% if value.layout == 'right' %} md:order-1{% else %} md:order-2{% endif %} px-4">
+                {% picture value.image format-{webp,jpeg} width-{992,768} sizes="(min-width: 768px) 50vw, 100vw" %}
             </div>
         </div>
     </div>

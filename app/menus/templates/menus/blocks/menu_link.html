@@ -1,14 +1,11 @@
 {% load menu_tags %}
-{% comment %} 
+{% comment %}
 Params:
 - menu: object -> The menu object
 - check_active_item: boolean -> Whether to check if the item is active
 {% endcomment %}
 
-<li 
-    {% if value.handle %}id="{{ value.handle }}"{% endif %}
-    class="menu-item"
->
+<li {% if value.handle %}id="{{ value.handle }}"{% endif %}>
     {% if value.add_submenu %}
         {% page_submenu value as submenu %}
     {% endif %}
@@ -18,20 +15,18 @@ Params:
             href="{{ value.url }}"
             target="{{ value.target }}"
             {% if value.target == "_blank" %}rel="noreferrer noopener"{% endif %}
-            class="menu-item-link{% menuitemactiveclass ' active' value.page check_active_item %}"
+            class="text-light hover:text-secondary no-underline{% menuitemactiveclass ' opacity-50' value.page check_active_item %}"
         >
-            <h2 class="menu-item-heading">
-                {{ value.label_or_page_title }}
-            </h2>
+            <h2 class="text-light text-2xl my-4">{{ value.label_or_page_title }}</h2>
         </a>
 
         {% include "menus/partials/_page_submenu.html" with submenu=submenu menu=menu check_active_item=check_active_item submenu_level=1 %}
     {% else %}
-        <a 
+        <a
             href="{{ value.url }}"
             target="{{ value.target }}"
             {% if value.target == "_blank" %}rel="noreferrer noopener"{% endif %}
-            class="menu-item-link{% menuitemactiveclass ' active' value.page check_active_item %}"
+            class="text-light hover:text-secondary no-underline{% menuitemactiveclass ' opacity-50' value.page check_active_item %}"
         >
             {{ value.label_or_page_title }}
         </a>

@@ -1,15 +1,12 @@
 {% load wagtailcore_tags menu_tags %}
-{% comment %} 
+{% comment %}
 Params:
 - menu: object -> The menu object
 - check_active_item: boolean -> Whether to check if the item is active
 {% endcomment %}
 
-<li 
-    {% if value.handle %}id="{{ value.handle }}"{% endif %}
-    class="menu-item menu-category"
->
-    <h2 class="menu-item-heading{% menucategoryactiveclass ' active' value check_active_item %}">
+<li {% if value.handle %}id="{{ value.handle }}"{% endif %}>
+    <h2 class="text-light text-2xl my-4{% menucategoryactiveclass ' opacity-50' value check_active_item %}">
         {{ value.label }}
     </h2>
 

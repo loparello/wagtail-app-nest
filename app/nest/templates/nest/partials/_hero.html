@@ -1,9 +1,12 @@
 {% load wagtailimages_tags %}
 
-<div class="hero">
-    {% if page.image %}
-        {% picture page.image format-{avif,webp,jpeg} fill-{1920x335,992x430,768x500} sizes="100vw" %}
-    {% endif %}
-
-    {% include "nest/partials/_page_intro.html" %}
-</div>
+{% if page.image %}
+    <div class="hero mt-18.5 lg:mt-0 relative overflow-hidden w-full">
+        {% picture page.image format-{webp,jpeg} fill-{1920x335,992x430,768x500} sizes="100vw" %}
+        {% include "nest/partials/_page_intro.html" %}
+    </div>
+{% else %}
+    <div class="mt-18.5 lg:mt-0 py-8">
+        {% include "nest/partials/_page_intro.html" %}
+    </div>
+{% endif %}

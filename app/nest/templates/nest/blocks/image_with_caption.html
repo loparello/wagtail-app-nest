@@ -1,10 +1,10 @@
 {% load wagtailimages_tags %}
 
-<figure class="image-with-caption">
-    {% picture value.image format-{avif,webp,jpeg} width-{1200,992,768} sizes="(min-width: 992px) 1200px, (min-width: 768px) 992px, 768px" %}
+<figure class="my-10 flex flex-col items-center">
+    {% picture value.image format-{webp,jpeg} width-{1200,992,768} sizes="(min-width: 992px) 1200px, (min-width: 768px) 992px, 768px" %}
 
     {% if value.caption %}
-        <figcaption>
+        <figcaption class="text-sm text-center mt-2 text-dark">
             {{ value.caption }}
         </figcaption>
     {% endif %}

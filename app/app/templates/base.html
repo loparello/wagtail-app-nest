@@ -26,12 +26,14 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="flex flex-col min-h-screen {% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
         {% include "partials/_header.html" %}
 
-        {% block content %}{% endblock %}
+        <div class="flex-1">
+            {% block content %}{% endblock %}
+        </div>
 
         {% include "partials/_footer.html" %}
 

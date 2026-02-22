@@ -1,12 +1,8 @@
 <template>
-  <div class="hero">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h1>{{ title }}</h1>
-          <p>{{ message }}</p>
-        </div>
-      </div>
+  <div class="hero mt-18.5 lg:mt-0 py-8">
+    <div class="container mx-auto px-4">
+      <h1>{{ title }}</h1>
+      <p>{{ message }}</p>
     </div>
   </div>
 </template>

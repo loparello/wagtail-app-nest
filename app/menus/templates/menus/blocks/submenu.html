@@ -1,22 +1,19 @@
 {% load menu_tags %}
-{% comment %} 
+{% comment %}
 Params:
 - menu: object -> The menu object
 - check_active_item: boolean -> Whether to check if the item is active
 {% endcomment %}
 
-<ul class="submenu">
+<ul class="list-none pl-0 text-left">
     {% for block in value %}
         {% with block.value as item %}
-            <li 
-                {% if item.handle %}id="{{ item.handle }}"{% endif %}
-                class="submenu-item"
-            >
-                <a 
+            <li {% if item.handle %}id="{{ item.handle }}"{% endif %} class="mb-1">
+                <a
                     href="{{ item.url }}"
                     target="{{ item.target }}"
                     {% if item.target == "_blank" %}rel="noreferrer noopener"{% endif %}
-                    class="submenu-item-link{% menuitemactiveclass ' active' item.page check_active_item %}"
+                    class="text-light hover:text-secondary no-underline{% menuitemactiveclass ' opacity-50' item.page check_active_item %}"
                 >
                     {{ item.label_or_page_title }}
                 </a>

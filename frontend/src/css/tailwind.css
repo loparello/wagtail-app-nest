@@ -116,7 +116,39 @@
   }
 
   picture img {
+    max-width: 100%;
     width: auto;
     height: auto;
   }
+}
+
+/* Hero image responsive sizing - Wagtail generates picture/img, so we style via selector */
+.hero picture {
+  display: block;
+  width: 100%;
+}
+
+.hero picture img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+@media (width >= 768px) {
+  .hero picture img {
+    height: 430px;
+  }
+}
+
+@media (width >= 1024px) {
+  .hero picture img {
+    height: 335px;
+  }
+}
+
+/* Video embed - Wagtail generates the iframe, so we size it via selector */
+.video-embed iframe {
+  width: 100%;
+  max-width: 854px;
+  height: 480px;
 }
