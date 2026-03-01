@@ -10,7 +10,7 @@ A template for starting new Django and [Wagtail CMS](https://wagtail.org/) appli
 - Custom Wagtail image and document models.
 - Custom user model.
 - Front-end setup with Vite.js.
-- Vue.js and Sass with a simple style framework for quick styling and prototyping.
+- Vue.js and Tailwind CSS for quick styling and prototyping.
 - Main menu as a Vue.js component (which uses the data from the Menus app).
 
 This repository is set as a GitHub template and can be used to generate a new repository with the same directory structure and files but with fresh and independent Git history. Check [creating a repository from a template on GitHub](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template).
@@ -97,7 +97,7 @@ If you want to install new packages or update current ones, you need to do it ou
 
 ## Frontend
 
-The frontend leverages [Vue.js 3](https://v3.vuejs.org/guide/introduction.html) with a multiple instance approach, utilizing TypeScript and Sass for interactivity and styling within Django templates.
+The frontend leverages [Vue.js 3](https://v3.vuejs.org/guide/introduction.html) with a multiple instance approach, utilizing TypeScript and Tailwind CSS for interactivity and styling within Django templates.
 
 Assets are built and served using [ViteJS](https://vite.dev/) from the `/frontend/` directory. Django integrates these compiled assets through [django-vite](https://github.com/MrBin99/django-vite). Ensure the Vite development server is running concurrently with the Django server for proper functionality.
 
