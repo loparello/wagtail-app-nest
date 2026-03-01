@@ -152,3 +152,31 @@
   max-width: 854px;
   height: 480px;
 }
+
+/* Egg animation (home page decorative SVG) */
+@keyframes egg-pos {
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+.egg {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.egg-space {
+  max-width: 265px;
+}
+
+.egg-shape {
+  fill: var(--color-teal);
+  animation: egg-pos 3s ease infinite;
+  transform: translateY(50px);
+  transform-origin: 50% 80%;
+}
