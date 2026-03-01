@@ -1,16 +1,16 @@
-{% comment %} 
+{% comment %}
 Params:
 - parent_item: dict -> The parent item of the submenu
 {% endcomment %}
 
-<ul class="submenu">
+<ul class="bg-primary list-none p-2 m-0 absolute min-w-40 z-1000 rounded border border-black/15">
     {% for item in parent_item.submenu_items %}
-        <li class="submenu-item">
+        <li class="px-4 py-1">
             <a
                 href="{{ item.link.url }}"
                 target="{{ item.link.target }}"
                 {% if item.link.target == "_blank" %}rel="noreferrer noopener"{% endif %}
-                class="submenu-item-link{{ item.active|yesno:' active,' }}"
+                class="text-white no-underline whitespace-nowrap hover:underline{{ item.active|yesno:' opacity-50,' }}"
             >
                 {{ item.label }}
             </a>

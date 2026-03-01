@@ -1,8 +1,8 @@
 {% load wagtailcore_tags %}
 
 {% if footer_menu %}
-    <nav class="footer-menu">
-        <ul class="menu-nav">
+    <nav class="w-full">
+        <ul class="flex flex-wrap justify-evenly list-none p-0 m-0 w-full">
             {% for block in footer_menu.menu_items %}
                 {% include_block block with menu=footer_menu check_active_item=False %}
             {% endfor %}

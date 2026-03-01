@@ -1,5 +1,5 @@
 {% load i18n wagtailcore_tags menu_tags %}
-{% comment %} 
+{% comment %}
 Params:
 - submenu: dict -> The submenu data
 - menu: object -> The menu object
@@ -8,12 +8,12 @@ Params:
 {% endcomment %}
 
 {% if submenu.submenu_items %}
-    <ul class="submenu">
+    <ul class="list-none pl-0 text-left">
         {% for item in submenu.submenu_items %}
-            <li class="submenu-item">
-                <a 
+            <li class="mb-1{% if submenu_level == 2 %} pl-4{% endif %}">
+                <a
                     href="{% pageurl item.page %}"
-                    class="submenu-item-link{% menuitemactiveclass ' active' item.page check_active_item %}"
+                    class="{% if submenu_level == 2 %}text-sm {% endif %}text-light hover:text-secondary no-underline{% menuitemactiveclass ' opacity-50' item.page check_active_item %}"
                 >
                     {{ item.label }}
                 </a>

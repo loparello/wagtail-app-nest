@@ -1,25 +1,14 @@
-{% comment %} 
+{% comment %}
 Params:
 - item: dict -> The menu item
 {% endcomment %}
 
-<li 
-    {% if item.handle %}id="{{ item.handle }}"{% endif %}
-    class="menu-item menu-category{{ item.has_submenu|yesno:' dropdown,' }}"
->   
-    <span class="menu-item-link{{ item.active|yesno:" active," }}">
+<li {% if item.handle %}id="{{ item.handle }}"{% endif %} class="relative py-2 px-4">
+    <span class="text-white cursor-default{{ item.active|yesno:' opacity-50,' }}">
         {{ item.label }}
     </span>
 
     {% if item.has_submenu %}
-        <input 
-            id="menuItem{{ forloop.counter }}"
-            type="checkbox" name="menuItem{{ forloop.counter }}"
-            class="dropdown-control"
-        >
-        <label class="menu-item-arrow" for="menuItem{{ forloop.counter }}">
-        </label>
-
         {% include "menus/partials/_main_menu_submenu.html" with parent_item=item %}
     {% endif %}
 </li>

@@ -2,19 +2,25 @@
   <template v-if="hasSubmenu">
     <li
       :id="item.handle"
-      class="menu-item dropdown"
+      class="relative py-2 px-4"
       @mouseover="forceToggleSubmenu(true)"
       @mouseleave="forceToggleSubmenu()"
     >
-      <a
-        :href="item.link && item.link.url"
-        :target="item.link && item.link.target"
-        class="menu-item-link"
-        :class="{ active: item.active }"
-      >
-        {{ item.label }}
-      </a>
-      <i class="menu-item-arrow" @click="toggleSubmenu" />
+      <div class="flex items-center">
+        <a
+          :href="item.link && item.link.url"
+          :target="item.link && item.link.target"
+          class="text-white hover:underline"
+          :class="{ 'opacity-50': item.active }"
+        >
+          {{ item.label }}
+        </a>
+        <span
+          class="ml-1 cursor-pointer text-white text-xs"
+          @click="toggleSubmenu"
+          >▾</span
+        >
+      </div>
 
       <transition-collapse>
         <submenu v-show="showSubmenu" :submenu-items="submenuItems" />
@@ -22,12 +28,12 @@
     </li>
   </template>
   <template v-else>
-    <li :id="item.handle" class="menu-item">
+    <li :id="item.handle" class="py-2 px-4">
       <a
         :href="item.link && item.link.url"
         :target="item.link && item.link.target"
-        class="menu-item-link"
-        :class="{ active: item.active }"
+        class="text-white block hover:underline"
+        :class="{ 'opacity-50': item.active }"
       >
         {{ item.label }}
       </a>
@@ -36,11 +42,11 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType } from 'vue';
-import type { MenuItem } from '../../types/menu';
-import { useSubmenu } from '../../composables/submenu';
-import TransitionCollapse from '../Transitions/TransitionCollapse.vue';
-import Submenu from './Submenu.vue';
+import { PropType } from "vue";
+import type { MenuItem } from "../../types/menu";
+import { useSubmenu } from "../../composables/submenu";
+import TransitionCollapse from "../Transitions/TransitionCollapse.vue";
+import Submenu from "./Submenu.vue";
 
 // Props
 const props = defineProps({
@@ -50,6 +56,11 @@ const props = defineProps({
   },
 });
 
-const { showSubmenu, hasSubmenu, submenuItems, toggleSubmenu, forceToggleSubmenu } =
-  useSubmenu(props.item);
+const {
+  showSubmenu,
+  hasSubmenu,
+  submenuItems,
+  toggleSubmenu,
+  forceToggleSubmenu,
+} = useSubmenu(props.item);
 </script>

@@ -1,10 +1,10 @@
 <template>
-  <li :id="item.handle" class="submenu-item">
+  <li :id="item.handle" class="px-4 py-1">
     <a
       :href="item.link && item.link.url"
       :target="item.link && item.link.target"
-      class="submenu-item-link"
-      :class="{ active: item.active }"
+      class="block w-full text-white font-normal text-left no-underline whitespace-nowrap hover:underline"
+      :class="{ 'opacity-50': item.active }"
     >
       {{ item.label }}
     </a>
@@ -14,10 +14,10 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType } from 'vue';
-import type { MenuItem } from '../../types/menu';
-import { useSubmenu } from '../../composables/submenu';
-import Submenu from './Submenu.vue';
+import { PropType } from "vue";
+import type { MenuItem } from "../../types/menu";
+import { useSubmenu } from "../../composables/submenu";
+import Submenu from "./Submenu.vue";
 
 // Props
 const props = defineProps({

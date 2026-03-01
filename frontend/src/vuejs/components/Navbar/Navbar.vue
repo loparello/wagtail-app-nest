@@ -1,13 +1,19 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-logo">
-      <a href="/">
+  <nav
+    class="flex justify-between items-center flex-wrap"
+    role="navigation"
+    aria-label="main navigation"
+  >
+    <div class="min-w-37.5 flex items-center">
+      <a href="/" class="text-white">
         <!-- <img
           src="../../../img/logo.svg"
           alt="Logo"
-          class="navbar-logo-figure"
+          class="max-w-37.5 max-h-13.75"
         /> -->
-        <span>Wagtail App Nest</span>
+        <span class="font-heading text-2xl font-bold capitalize"
+          >Wagtail App Nest</span
+        >
       </a>
     </div>
 
@@ -23,11 +29,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, PropType } from 'vue';
-import type { Menu } from '../../types/menu';
-import MainMenu from '../MainMenu/MainMenu.vue';
-import TransitionCollapse from '../Transitions/TransitionCollapse.vue';
-import MenuToggler from './MenuToggler.vue';
+import { ref, PropType } from "vue";
+import type { Menu } from "../../types/menu";
+import MainMenu from "../MainMenu/MainMenu.vue";
+import TransitionCollapse from "../Transitions/TransitionCollapse.vue";
+import MenuToggler from "./MenuToggler.vue";
 
 // Props
 defineProps({
